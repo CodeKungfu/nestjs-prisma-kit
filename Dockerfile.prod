@@ -1,0 +1,21 @@
+# Creating multi-stage build for production
+FROM node:18-buster as depend
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn
+
+FROM node:18-alpine
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+WORKDIR /app
+# set timezone
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'Asia/Shanghai' > /etc/timezone
+
+COPY --from=depend /app/node_modules ./node_modules
+COPY . .
+RUN npx prisma generate
+RUN yarn build
+ENV PATH /app/node_modules/.bin:$PATH
+EXPOSE 8001
+CMD ["yarn", "start:prod"]

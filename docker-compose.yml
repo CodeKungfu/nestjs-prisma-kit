@@ -1,0 +1,10 @@
+version: '3'
+services:
+  jxstrapiapp:
+    image: demoapp
+    container_name: demoapp
+    environment:
+      TZ: "Asia/Shanghai"
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
