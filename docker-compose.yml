@@ -1,8 +1,8 @@
 version: '3'
 services:
   jxstrapiapp:
-    image: demoapp
-    container_name: demoapp
+    image: nestjsprismakit
+    container_name: nestjsprismakit
     environment:
       TZ: "Asia/Shanghai"
     restart: unless-stopped
