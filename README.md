@@ -26,7 +26,7 @@ npm run db:gen
 
 1，clone 代码 
 
-2，yarn instlal
+2，yarn install
 
 3， 运行sql （sql/sql.sql）
 

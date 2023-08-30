@@ -7,7 +7,7 @@ export class DeleteDto {
   })
   @IsArray()
   @ArrayNotEmpty()
-  Ids: number[];
+  ids: number[];
 }
 
 export class DeleteStringIdDto {
@@ -17,5 +17,5 @@ export class DeleteStringIdDto {
   })
   @IsArray()
   @ArrayNotEmpty()
-  Ids: string[];
+  ids: string[];
 }
