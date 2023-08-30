@@ -3,7 +3,7 @@ import path from 'path';
 import { HttpStatus, Logger, UnprocessableEntityException, ValidationPipe } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
-import { IoAdapter } from '@nestjs/platform-socket.io';
+// import { IoAdapter } from '@nestjs/platform-socket.io';
 import { ValidationError } from 'class-validator';
 import { flatten } from 'lodash';
 import { AppModule } from './app.module';
@@ -28,7 +28,7 @@ async function bootstrap() {
   app.useLogger(app.get(LoggerService));
   // validate
   app.useGlobalPipes(
-    new ValidationPipe({
+    new ValidationPipe({ // 参数校验
       transform: true,
       whitelist: true,
       forbidNonWhitelisted: true,
@@ -43,7 +43,7 @@ async function bootstrap() {
   // api interceptor
   app.useGlobalInterceptors(new ApiTransformInterceptor(new Reflector()));
   // websocket
-  app.useWebSocketAdapter(new IoAdapter());
+  // app.useWebSocketAdapter(new IoAdapter());
   // swagger
   setupSwagger(app);
   await app.listen(PORT, '0.0.0.0', () => {
