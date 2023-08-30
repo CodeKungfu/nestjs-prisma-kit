@@ -10,7 +10,7 @@
 
 ### 致谢
 
-- [sf-nest-admin](https://github.com/buqiyuan/nest-admin)
+- [nest-admin](https://github.com/buqiyuan/nest-admin)
 
 ### LICENSE
 
@@ -21,5 +21,23 @@
 npx prisma generate
 
 npm run db:gen
+
+# 部署
+
+1，clone 代码 
+
+2，yarn instlal
+
+3， 运行sql （sql/sql.sql）
+
+4, 新建.env
+配置好.env 参考.env.local
+
+5, npx prisma db pull (yarn db:pull)
+
+6, yarn db:gen
+
+7, 启动代码: yarn dev
+
 
 
